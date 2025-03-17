@@ -40,7 +40,7 @@ int    ber_check(char *folder)
         return (0);
     else
 		handle_error("Invalid file extension\n",NULL);
-    return (1);
+    return (1);// gerek yok 
 }
 char	*ft_strdup(const char *s1)
 {
