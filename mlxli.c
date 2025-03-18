@@ -55,11 +55,11 @@ void	desing(t_game *game)
 			game->map_y * 64, "so_long");
 	if (!(game->win))
 		handle_error("Error\nmlx window cannot initialized\n", game);
-	(game->img_ptr).player = mlx_xpm_file_to_image(game->mlx,"panda.xpm", &width, &height);
-	(game->img_ptr).wall = mlx_xpm_file_to_image(game->mlx,"bambu.xpm", &width, &height);
-	(game->img_ptr).collectible = mlx_xpm_file_to_image(game->mlx,"mama.xpm", &width, &height);
-	(game->img_ptr).floor = mlx_xpm_file_to_image(game->mlx,"yol.xpm", &width, &height);
-		(game->img_ptr).exit = mlx_xpm_file_to_image(game->mlx,"e.xpm", &width, &height);
+	(game->img_ptr).player = mlx_xpm_file_to_image(game->mlx,"img/panda.xpm", &width, &height);
+	(game->img_ptr).wall = mlx_xpm_file_to_image(game->mlx,"img/bambu.xpm", &width, &height);
+	(game->img_ptr).collectible = mlx_xpm_file_to_image(game->mlx,"img/mama.xpm", &width, &height);
+	(game->img_ptr).floor = mlx_xpm_file_to_image(game->mlx,"img/yol.xpm", &width, &height);
+		(game->img_ptr).exit = mlx_xpm_file_to_image(game->mlx,"img/e.xpm", &width, &height);
 
 	
     if (!(game->img_ptr).floor)
