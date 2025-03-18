@@ -6,7 +6,7 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:13:01 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/16 16:08:35 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/18 14:00:18 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int    ber_check(char *folder)
         return (0);
     else
 		handle_error("Invalid file extension\n",NULL);
-    return (1);// gerek yok 
+    return (1);
 }
 char	*ft_strdup(const char *s1)
 {
@@ -73,7 +73,7 @@ void	end_file_check(char *next, char *line, int fd)
 			close(fd);
 			free(line);
 			free(next);
-			handle_error("Error The last line mustn't newline!", NULL);
+			handle_error("Error\nThe last line mustn't newline\n", NULL);
 		}
 	}
 }

@@ -1,32 +1,39 @@
 NAME = so_long
-CFLAGS = -Wall -Werror -Wextra -g
-RM = rm -rf
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -Iget_next_line  -Ift_printf -Iminilibx-linux
 
-FT_PRINTF = ft_printf/libftprintf.a
+MLX_FLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
-SRC = get_next_line/get_next_line.c \
-      get_next_line/get_next_line_utils.c \
-      create_map.c \
-      so_long_utils.c \
-      main.c free.c objects_check.c
+GNL_SRCS = get_next_line/get_next_line.c \
+           get_next_line/get_next_line_utils.c
+GNL_OBJS = $(GNL_SRCS:.c=.o)
 
-OBJ = $(SRC:.c=.o)
+SRCS = create_map.c \
+      so_long_utils.c mlxli.c\
+      main.c free.c objects_check.c\
+	$(GNL_SRCS)
+
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(FT_PRINTF)
-		$(CC) $(CFLAGS) $(OBJ) $(FT_PRINTF) -o $(NAME)
+.c.o:
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(FT_PRINTF):
-		make -C ft_printf
+
+$(NAME): $(OBJS)
+	@make -C ft_printf
+	@make -C minilibx-linux
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) ft_printf/libftprintf.a $(MLX_FLAGS)
 
 clean:
-		make clean -C ft_printf
-		$(RM) $(OBJ)
+	@make -C ft_printf clean
+	@make -C minilibx-linux clean
+	@rm -f $(OBJS) $(GNL_OBJS)
 
 fclean: clean
-		make fclean -C ft_printf
-		$(RM) $(NAME)
+	@make -C ft_printf fclean
+	@rm -f $(NAME)
 
 re: fclean all
 

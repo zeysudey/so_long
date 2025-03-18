@@ -93,7 +93,7 @@ void    fill_map(t_game *game, int fd)
 		j = 0;
         while (line[j] != '\0' && line[j] != '\n')
         {
-            object_number(line[j], game, i + 1, j);
+            object_number(line[j], game, i , j);
             j++;
 		}
         free(line);
@@ -113,18 +113,13 @@ void    create_map(t_game *game)
 {
         int fd;
         map_height_check(game->b_name, game);
-
         game->map = malloc(sizeof(char *) * (game->map_y + 1));
         if (!game->map)
-        {
-            write(2, "Memory allocation failed\n", 25);
-            exit(EXIT_FAILURE);
-        }
+            handle_error("Error\nMemory allocation failed\n", game);
 		fd = open(game->b_name, O_RDONLY);
         if (fd < 0)
             handle_error("Error: Failed to open map file.\n", game);
         fill_map(game, fd);
-
         if (!game->map[0])
         {
             write(2, "Empty map\n", 10);

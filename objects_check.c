@@ -6,7 +6,7 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 16:32:36 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/16 21:23:09 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/18 18:10:23 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,18 @@ static void validate_map_walls(t_game *game)
     map_data = game->map;
     index = 0;
     if (game->error_count)
-        handle_error("Error: Unknown object detected", game);
-    
-    // **Üst ve Alt Kenar Kontrolü**
+        handle_error("Error\nUnknown object detected\n", game);
     while (map_data[0][index] && map_data[game->map_y - 1][index])
     {
         if (map_data[0][index] != '1' || map_data[game->map_y - 1][index] != '1')
-            handle_error("Error: Map boundaries are not properly enclosed!", game);
+            handle_error("Error\nMap boundaries are not enclosed\n", game);
         index++;
     }
-
-    // **Sol ve Sağ Kenar Kontrolü**
     index = 1; 
     while (index < game->map_y - 1)//satır kadar gidiiyor yani
     {
         if (map_data[index][0] != '1' || map_data[index][game->map_x - 1] != '1')
-            handle_error("Error: Side walls are not properly enclosed!", game);
+            handle_error("Error\nSide walls are not enclosed\n", game);
         index++;
     }
 }
@@ -67,7 +63,6 @@ void free_clone_map(t_game *game)
 
     if (!game || !game->map_clone)
         return;
-    
     i = 0;
     while (game->map_clone[i])
     {
@@ -83,17 +78,17 @@ void    object_check(t_game *game)
 
 	coin = game->coin_count;
 	if (game->coin_count < 1)
-		handle_error("Wrong map,no coin", game);
+		handle_error("Error\nNo coin\n", game);
 	if (game->player_count!= 1)
-		handle_error("error, the number of players is not 1", game);
-	if (game->exit_count < 1)
-        handle_error("error exit cant be less than 1", game);
+		handle_error("Error\nThe number of players is not 1\n", game);
+	if (game->exit_count != 1)
+        handle_error("Error\nExit count must be 1\n", game);
     validate_map_walls(game);
     game->map_clone = clonemap(game);
     if (!game->map_clone)
-    	handle_error("Error: Failed to clone the map!", game);
+    	handle_error("Error\nFailed to clone the map\n", game);
     if (flood_fill(game->player_x, game->player_y, game->map_clone, game))
-        handle_error2("exit or coin is closed", game);
+        handle_error2("Error\nPlayer cant acces other objects\n", game);
     if (game->map_clone)
     {
         free_clone_map(game);
