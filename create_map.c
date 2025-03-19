@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_map.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/19 14:41:09 by zyilmaz           #+#    #+#             */
+/*   Updated: 2025/03/19 15:16:58 by zyilmaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 #include <fcntl.h>
 #include <stdlib.h>
@@ -5,12 +17,13 @@
 
 static void rectangle(t_game *game)
 {
-    int i = 0;
+    int i;
     int len1;
     int len2;
     int last;
 
-    if (!game->map || !game->map[0])  // NULL kontrolü
+    i = 0;
+    if (!game->map || !game->map[0])
         handle_error("Error\n Map is empty!\n", game);
     while (game->map[i] && game->map[i + 1])
     {
@@ -89,21 +102,22 @@ void    fill_map(t_game *game, int fd)
     {
         game->map[i] = ft_strdup(line);
         if (!game->map[i])
-            handle_error("Error\nMemory allocation failed\n", game);       
+        {
+            free(line);
+            handle_error("Error\nMemory allocation failed\n", game); 
+        }
+                  
 		j = 0;
         while (line[j] != '\0' && line[j] != '\n')
         {
             object_number(line[j], game, i , j);
             j++;
 		}
-        free(line);
+        if (line)
+            free(line);
         line = get_next_line(fd);
         i++;
     }
-	/*ft_printf("%d\n",game->coin_count);
-	ft_printf("%d\n",game->player_count);
-	ft_printf("%d\n",game->exit_count);*/
-
     game->map[i] = NULL;
     close(fd);
     rectangle(game);
@@ -123,7 +137,8 @@ void    create_map(t_game *game)
         if (!game->map[0])
         {
             write(2, "Empty map\n", 10);
-            free_map(game);            
+
+			free_map(game);
             return ;
-        }      
+        }
 }
