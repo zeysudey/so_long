@@ -8,9 +8,9 @@ GNL_SRCS = get_next_line/get_next_line.c \
            get_next_line/get_next_line_utils.c
 GNL_OBJS = $(GNL_SRCS:.c=.o)
 
-SRCS = create_map.c \
-      so_long_utils.c mlxli.c game.c move.c\
-      main.c free.c objects_check.c\
+SRCS = create_map.c fill_map.c handle_errors.c\
+      so_long_utils.c init_mlx.c game.c move.c\
+      main.c free.c checks.c\
 	$(GNL_SRCS)
 
 OBJS = $(SRCS:.c=.o)

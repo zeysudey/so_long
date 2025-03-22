@@ -6,7 +6,7 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:42:53 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/19 13:53:38 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/20 13:51:38 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	close_game(t_game *game)
 	return (0);
 }
 
-void hook_setup(t_game *game)
+void	hook_setup(t_game *game)
 {
 	mlx_hook(game->win, 2, 1, handle_key, game);
-    mlx_hook(game->win, 17, 17, close_game, game);	
+	mlx_hook(game->win, 17, 17, close_game, game);
 }
