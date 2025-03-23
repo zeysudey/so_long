@@ -6,25 +6,11 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:57:10 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/22 17:13:35 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/23 15:18:28 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	handle_error2(const char *msg, t_game *game)
-{
-	if (msg)
-		ft_printf("%s", msg);
-	if (game && game->map)
-		free_map(game);
-	if (game->map_clone)
-	{
-		free_clone_map(game);
-		game->map_clone = NULL;
-	}
-	exit(EXIT_FAILURE);
-}
 
 void	handle_error_mlx(const char *msg, t_game *game)
 {

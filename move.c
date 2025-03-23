@@ -6,7 +6,7 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 07:43:41 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/20 13:41:52 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/23 14:29:39 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	close_game_for_move(t_game *game)
 {
+	game->move_c++;
+	ft_printf("Moves: %d\n", game->move_c);
 	ft_printf("*** YOU WON THE GAME! TOTAL MOVES: %d ***\n", game->move_c);
 	close_game(game);
 }

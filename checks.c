@@ -6,7 +6,7 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 16:32:36 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/22 21:20:24 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:24:35 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 static void	flood_fill(int i, int j, t_game *game)
 {
-	if (i < 0 || i >= game->map_y || j < 0 || j >= game->map_x)
-		return ;
 	if (game->map_clone[i][j] == '1' || game->map_clone[i][j] == 'Z')
 		return ;
 	if (game->map_clone[i][j] == 'E')
-		{
-			game->exit_reachable = 1;
-			game->map_clone[i][j] = 'Z';
-			return ;
-		}
+	{
+		game->exit_reachable = 1;
+		game->map_clone[i][j] = 'Z';
+		return ;
+	}
 	game->map_clone[i][j] = 'Z';
 	flood_fill(i + 1, j, game);
 	flood_fill(i - 1, j, game);
@@ -36,7 +34,7 @@ int	validcheck(t_game *game)
 	int	i;
 	int	j;
 
-	game->exit_reachable = 0; 
+	game->exit_reachable = 0;
 	flood_fill(game->player_y, game->player_x, game);
 	i = 0;
 	if (game->exit_reachable == 0)
@@ -69,7 +67,7 @@ void	check(t_game *game)
 	if (!game->map_clone)
 		handle_error("Error\nFailed to clone the map\n", game);
 	if (validcheck(game))
-		handle_error("Error\nPlayer cant acces other objects\n", game);
+		handle_error("Error\nPlayer can't acces other objects\n", game);
 	if (game->map_clone)
 	{
 		free_clone_map(game);

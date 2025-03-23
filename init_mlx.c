@@ -6,7 +6,7 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:01:34 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/22 21:28:09 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/23 15:33:25 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	desing(t_game *game)
 	game->win = mlx_new_window(game->mlx, game->map_x * 64,
 			game->map_y * 64, "so_long");
 	if (!(game->win))
-		handle_error("Error\nmlx window cannot initialized\n", game);
+		handle_error_mlx("Error\nmlx window cannot initialized\n", game);
 	(game->img_ptr).player = mlx_xpm_file_to_image(game->mlx,
 			"textures/player.xpm", &width, &height);
 	(game->img_ptr).wall = mlx_xpm_file_to_image(game->mlx,

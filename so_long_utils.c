@@ -6,7 +6,7 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:13:01 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/22 20:23:39 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:13:21 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	**clonemap(t_game *game)
 	i = 0;
 	clone = malloc(sizeof(char *) * (game->map_y + 1));
 	if (!clone)
-		handle_error("malloc error", game);
+		handle_error("Error\nmalloc error\n", game);
 	while (i < game->map_y)
 	{
 		clone[i] = ft_strdup(game->map[i]);

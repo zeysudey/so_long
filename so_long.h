@@ -6,7 +6,7 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:12:41 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/22 17:45:33 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/23 15:18:33 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	fill_map(t_game *game, int fd);
 void	map_height(t_game *map);
 void	free_map(t_game *game);
 void	end_file_check(char *next, char *line, int fd);
-void	handle_error2(const char *msg, t_game *game);
 void	desing(t_game *game);
 void	hook_setup(t_game *game);
 #endif

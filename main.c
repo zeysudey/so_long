@@ -6,7 +6,7 @@
 /*   By: zyilmaz <zyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 14:18:41 by zyilmaz           #+#    #+#             */
-/*   Updated: 2025/03/22 16:56:37 by zyilmaz          ###   ########.fr       */
+/*   Updated: 2025/03/23 15:20:23 by zyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	allzero(t_game *game)
 {
-	game->map = 0;
+	game->map = NULL;
 	game->b_name = NULL;
 	game->map_x = 0;
 	game->map_y = 0;
